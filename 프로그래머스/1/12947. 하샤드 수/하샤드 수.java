@@ -1,19 +1,11 @@
 class Solution {
     public boolean solution(int x) {
-        boolean answer = true;
-        String[] str = Integer.toString(x).split("");
-        int value = 0;
+        int sum = 0;
         
-        for (int i = 0; i < str.length; i++) {
-            value += Integer.parseInt(str[i]);
+        for (char c : String.valueOf(x).toCharArray()) {
+            sum += c - '0';
         }
         
-        if (x % value == 0) {
-            answer = true;
-        } else {
-            answer = false;
-        }
-        
-        return answer;
+        return x % sum == 0 ? true : false;
     }
 }
