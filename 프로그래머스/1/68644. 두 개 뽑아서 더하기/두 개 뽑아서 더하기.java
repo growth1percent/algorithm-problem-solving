@@ -11,8 +11,6 @@ class Solution {
             }
         }
         
-        ArrayList<Integer> list = new ArrayList<>(set);
-        
-        return list.stream().sorted().mapToInt(Integer::intValue).toArray();
+        return set.stream().sorted().mapToInt(Integer::intValue).toArray();
     }
 }
