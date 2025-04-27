@@ -1,27 +1,27 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(int[] lottos, int[] win_nums) {
-        int[] answer = {};
-        int high = 7;
-        int low = 7;
+        Set<Integer> set = new HashSet<>();
         
-       A: for (int i = 0; i < lottos.length; i++) {
-            for (int j = 0; j < win_nums.length; j++) {
-                if(lottos[i] == 0) {
-                    high -= 1;
-                    continue A;
-                } else if (lottos[i] == win_nums[j]) {
-                    high -= 1;
-                    low -= 1;
-                    continue A;
-                } 
+        int matchCount = 0;
+        int zeroCount = 0;
+        
+        for (int num : win_nums) {
+            set.add(num);
+        }
+        
+        for (int lotto : lottos) {
+            if (lotto == 0) {
+                zeroCount++;
+            } else if (set.contains(lotto)) {
+                matchCount++;
             }
         }
-        if (high == 7) {
-            high = 6;
-        }
-        if (low == 7) {
-            low = 6;
-        }
+        
+        int high = Math.min(7 - (zeroCount + matchCount), 6);
+        int low = Math.min(7 - matchCount, 6);
+        
         return new int[] {high, low};
     }
 }
