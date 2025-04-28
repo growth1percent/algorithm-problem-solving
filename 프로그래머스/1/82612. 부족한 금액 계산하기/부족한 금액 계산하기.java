@@ -3,7 +3,7 @@ class Solution {
         long payment = 0;
         long balance = 0;
         for (int i = 1; i <= count; i++) {
-            payment += price * i;
+            payment += (long) price * i;
         }
         
         balance = money - payment;
