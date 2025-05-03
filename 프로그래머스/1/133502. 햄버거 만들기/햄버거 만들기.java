@@ -9,10 +9,10 @@ class Solution {
             stack.push(ingredient[i]);
             
             if (stack.size() >= 4) {
-                Integer s1 = stack.pop();
-                Integer s2 = stack.pop();
-                Integer s3 = stack.pop();
-                Integer s4 = stack.pop();
+                int s1 = stack.pop();
+                int s2 = stack.pop();
+                int s3 = stack.pop();
+                int s4 = stack.pop();
                 
                 if (s1 == 1 && s2 == 3 && s3 == 2 && s4 == 1) {
                     count++;
