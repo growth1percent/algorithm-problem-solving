@@ -17,12 +17,13 @@ class Solution {
             }
         }
         
-        ArrayList<Integer> answer = new ArrayList<>();
+        int[] answer = new int[targets.length];
         
-        for (String target : targets) {
+        for (int i = 0; i < targets.length; i++) {
             int count = 0;
-            for (int i = 0; i < target.length(); i++) {
-                char c = target.charAt(i);
+            String target = targets[i];
+            for (int j = 0; j < target.length(); j++) {
+                char c = target.charAt(j);
                 if (map.containsKey(c)) {
                     count += map.get(c);
                 } else {
@@ -30,9 +31,9 @@ class Solution {
                     break;
                 }
             }
-            answer.add(count);
+            answer[i] = count;
         }
         
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        return answer;
     }
 }
