@@ -2,17 +2,9 @@ import java.util.*;
 
 class Solution {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
-        Deque<String> queue1 = new ArrayDeque<>();
-        Deque<String> queue2 = new ArrayDeque<>();
+        Deque<String> queue1 = new ArrayDeque<>(Arrays.asList(cards1));
+        Deque<String> queue2 = new ArrayDeque<>(Arrays.asList(cards2));
         Boolean answer = true;
-        
-        for(String s1 : cards1) {
-            queue1.addLast(s1);
-        }
-        
-        for (String s2 : cards2) {
-            queue2.addLast(s2);
-        }
         
         for (String g : goal) {
             if (!queue1.isEmpty() && queue1.peek().equals(g)) {
