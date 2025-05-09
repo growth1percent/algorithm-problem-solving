@@ -1,16 +1,15 @@
 import java.util.*;
 
 public class Main {
-    static boolean[] visited;
     static List<Integer>[] graph;
     static int answer = -1;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int edgeNum = sc.nextInt();
 
         graph = new ArrayList[n + 1];
-        visited = new boolean[n + 1];
 
         for (int i = 1; i <= n; i++) {
             graph[i] = new ArrayList<>();
@@ -24,18 +23,32 @@ public class Main {
             graph[node2].add(node1);
         }
 
-        dfs(1);
+        dfsIterative(1);
 
         System.out.print(answer);
     }
 
-    static void dfs(int node) {
-        visited[node] = true;
-        answer++;
+    static void dfsIterative(int start) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        boolean[] visited = new boolean[graph.length];
 
-        for (int next : graph[node]) {
-            if (!visited[next]) {
-                dfs(next);
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int node = stack.pop();
+
+            if (!visited[node]) {
+                visited[node] = true;
+                answer++;
+
+                List<Integer> neighbors = graph[node];
+                Collections.sort(neighbors, Collections.reverseOrder());
+
+                for (int next : neighbors) {
+                    if (!visited[next]) {
+                        stack.push(next);
+                    }
+                }
             }
         }
     }
