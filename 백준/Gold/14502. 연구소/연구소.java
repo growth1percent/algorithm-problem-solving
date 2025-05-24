@@ -1,22 +1,26 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
     static int n, m;
-    static int[][] graph;
-    static int maxSafeArea = 0;
-
+    static int[][] map;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
+    static int maxSafeArea = 0;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        m = sc.nextInt();
-        graph = new int[n][m];
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        map = new int[n][m];
 
         for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
-                graph[i][j] = sc.nextInt();
+                map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
@@ -32,10 +36,10 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (graph[i][j] == 0) {
-                    graph[i][j] = 1;
+                if (map[i][j] == 0) {
+                    map[i][j] = 1;
                     dfs(count + 1);
-                    graph[i][j] = 0;
+                    map[i][j] = 0;
                 }
             }
         }
@@ -45,31 +49,29 @@ public class Main {
         int[][] temp = new int[n][m];
 
         for (int i = 0; i < n; i++) {
-            temp[i] = graph[i].clone();
+            temp[i] = map[i].clone();
         }
 
-        Deque<int[]> queue = new ArrayDeque<>();
+        Deque<Virus> queue = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (temp[i][j] == 2) {
-                    queue.addLast(new int[]{i, j});
+                    queue.addLast(new Virus(i, j));
                 }
             }
         }
 
         while (!queue.isEmpty()) {
-            int[] pos = queue.pollFirst();
-            int x = pos[0];
-            int y = pos[1];
+            Virus pos = queue.pollFirst();
 
             for (int i = 0; i < 4; i++) {
-                int nx = x + dx[i];
-                int ny = y + dy[i];
+                int nx = pos.x + dx[i];
+                int ny = pos.y + dy[i];
 
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
                     if (temp[nx][ny] == 0) {
                         temp[nx][ny] = 2;
-                        queue.addLast(new int[]{nx, ny});
+                        queue.addLast(new Virus(nx, ny));
                     }
                 }
             }
@@ -81,7 +83,7 @@ public class Main {
     static void countSafeArea(int[][] temp) {
         int count = 0;
         for (int i = 0; i < n; i++) {
-            for (int j =0; j < m; j++) {
+            for (int j = 0; j < m; j++) {
                 if (temp[i][j] == 0) {
                     count++;
                 }
@@ -90,5 +92,14 @@ public class Main {
 
         maxSafeArea = Math.max(maxSafeArea, count);
     }
-}
 
+    static class Virus {
+        int x;
+        int y;
+
+        public Virus(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+}
