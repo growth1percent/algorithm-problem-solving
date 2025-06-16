@@ -9,17 +9,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
 
-        int n = 1;
-        int idx = 1;
+        int num = 1;
+        int floor = 1;
 
-        if (N == 1) {
-            System.out.println(1);
-        } else {
-            while (n < N) {
-                n = n + idx * 6;
-                idx++;
-            }
-            System.out.println(idx);
+        while (N > num) {
+            num += floor * 6;
+            floor++;
         }
+        System.out.println(floor);
     }
 }
