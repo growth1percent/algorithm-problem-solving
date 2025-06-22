@@ -8,6 +8,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
+
         int count = 0;
 
         while (N >= 0) {
@@ -16,6 +17,7 @@ public class Main {
                 System.out.println(count);
                 return;
             }
+
             N -= 3;
             count++;
         }
