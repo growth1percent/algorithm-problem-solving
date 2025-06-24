@@ -5,7 +5,7 @@ public class Main {
     static int N ,M;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         N = Integer.parseInt(br.readLine());
 
         Map<Integer, Integer> map = new HashMap<>();
@@ -22,9 +22,11 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
             int n = Integer.parseInt(st.nextToken());
-            sb.append(map.getOrDefault(n, 0)).append(" ");
+            bw.write(map.getOrDefault(n, 0) + " ");
         }
-        
-        System.out.println(sb);
+
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
