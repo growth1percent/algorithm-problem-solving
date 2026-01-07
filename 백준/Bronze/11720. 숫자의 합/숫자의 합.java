@@ -1,19 +1,21 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+
+        String[] strArr = br.readLine().split("");
+
+        int[] numArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+        
         int sum = 0;
-
-        int num = sc.nextInt();
-        String target = sc.next();
-        String[] array = target.split("");
-
-        for (int i = 0; i < num; i++) {
-            sum += Integer.parseInt(array[i]);
+        
+        for (int i = 0; i < numArr.length; i++) {
+            sum += numArr[i];
         }
-
-        System.out.print(sum);
+        
+        System.out.println(sum);
     }
 }
-
