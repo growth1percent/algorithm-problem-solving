@@ -1,38 +1,38 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    static int N, M;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
-        int[] prefix_arr = new int[N + 1];
-        int sum = 0;
+        long sum = 0;
+
+        long[] arr = new long[N + 1];
+
         for (int i = 1; i <= N; i++) {
-            int n = Integer.parseInt(st.nextToken());
-            sum += n;
-            prefix_arr[i] = sum;
+            int num = Integer.parseInt(st.nextToken());
+            sum += num;
+            arr[i] = sum;
         }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
+            int iIdx = Integer.parseInt(st.nextToken());
+            int jIdx = Integer.parseInt(st.nextToken());
 
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
-
-            int result = prefix_arr[end] - prefix_arr[start - 1];
+            long result = arr[jIdx] - arr[iIdx - 1];
 
             bw.write(result + "\n");
         }
 
         bw.flush();
-        bw.close();
         br.close();
+        bw.close();
     }
 }
