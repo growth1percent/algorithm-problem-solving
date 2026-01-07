@@ -6,14 +6,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        String[] strArr = br.readLine().split("");
-
-        int[] numArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
-        
+        String s = br.readLine();
+        char[] arr = s.toCharArray();
         int sum = 0;
         
-        for (int i = 0; i < numArr.length; i++) {
-            sum += numArr[i];
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i] - '0';    
         }
         
         System.out.println(sum);
