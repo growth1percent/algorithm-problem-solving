@@ -1,13 +1,15 @@
 class Solution {
     public String solution(String s) {
-        String answer = "";
-        int len = s.length();
+        int sNum = s.length();
         
-        if (len % 2 == 0) {
-            answer = s.substring(len / 2 - 1, len / 2 + 1);
+        String answer = "";
+        
+        if (sNum % 2 == 0) {
+            answer = s.substring(sNum / 2 - 1, sNum / 2 + 1);
         } else {
-            answer = s.substring(len / 2, len / 2 + 1);
+            answer = s.substring(sNum / 2, sNum / 2 + 1);
         }
+    
         return answer;
     }
 }
