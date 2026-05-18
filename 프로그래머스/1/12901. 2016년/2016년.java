@@ -1,19 +1,16 @@
 class Solution {
     public String solution(int a, int b) {
-        String answer = "";
+        int[] arr = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String[] day = {"THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"};
         
-        int[] days = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        int totalDays = 0;
-        
+        int dayNum = 0;
         for (int i = 1; i < a; i++) {
-            totalDays += days[i];
+            dayNum += arr[i];
         }
         
-        totalDays += b;
+        dayNum += b;
         
-        String[] week = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
-        
-        answer = week[(totalDays - 1) % 7];
+        String answer = day[dayNum % 7];
         
         return answer;
     }
