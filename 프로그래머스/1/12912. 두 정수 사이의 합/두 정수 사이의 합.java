@@ -1,13 +1,14 @@
 class Solution {
     public long solution(int a, int b) {
         long answer = 0;
-        long max = 0;
-        long min = 0;
         
-        max = Math.max(a, b);
-        min = Math.min(a, b);
+        if (a > b) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
         
-        for (long i = min; i <= max; i++) {
+        for (int i = a; i <= b; i++) {
             answer += i;
         }
         
