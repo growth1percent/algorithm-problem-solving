@@ -2,18 +2,25 @@ class Solution {
     boolean solution(String s) {
         boolean answer = true;
         
-        int plen = 0;
-        int ylen = 0;
+        s = s.toLowerCase();
+
+        int pNum = 0;
+        int yNum = 0;
         
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'p' || s.charAt(i) == 'P') {
-                plen += 1;
-            }
-            if (s.charAt(i) == 'y' || s.charAt(i) == 'Y') {
-                ylen += 1;
+        char[] cArr = s.toCharArray();
+        
+        for (char c : cArr) {
+            if (c == 'p') {
+                pNum++;
+            } else if (c == 'y'){
+                yNum++;
             }
         }
         
-        return plen == ylen ? true : false;
+        if (pNum != yNum) {
+            answer = false;
+        }
+
+        return answer;
     }
 }
