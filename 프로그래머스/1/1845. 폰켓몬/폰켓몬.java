@@ -1,22 +1,23 @@
-import java.util.HashMap;
+import java.util.*;
 
 class Solution {
     public int solution(int[] nums) {
-        int answer = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         
-        int len = nums.length;
-        int maxlen = len / 2;
-        
-        for (int n : nums) {
-            map.put(n, map.getOrDefault(n, 0) + 1);
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
         
-        if (map.size() >= maxlen) {
-            answer = maxlen;
-        } else {
+        int answer = 0;
+        
+        int maxNum = nums.length / 2;
+        
+        if (map.size() < maxNum) {
             answer = map.size();
+        } else {
+            answer = maxNum;
         }
+        
         return answer;
     }
 }
