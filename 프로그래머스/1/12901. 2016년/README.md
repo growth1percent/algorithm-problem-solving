@@ -1,10 +1,10 @@
 # [level 1] 2016년 - 12901 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901?language=csharp) 
 
 ### 성능 요약
 
-메모리: 60 MB, 시간: 0.02 ms
+메모리: 30.3 MB, 시간: 0.21 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 05월 18일 16:35:51
+2026년 05월 19일 08:02:16
 
 ### 문제 설명
 
