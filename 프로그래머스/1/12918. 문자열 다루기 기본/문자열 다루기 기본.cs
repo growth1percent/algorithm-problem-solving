@@ -1,20 +1,25 @@
 public class Solution {
     public bool solution(string s) {
-        bool answer = true;
-        
         if (s.Length != 4 && s.Length != 6) 
         {
-            answer = false;
+            return false;
         }
         
-        char[] arr = s.ToCharArray();
-        
-        foreach (char c in arr) 
+        foreach (char c in s) 
         {
             if (!char.IsDigit(c))
-                answer = false;
+                return false;
         }
         
-        return answer;
+        /** Linq 풀이
+        
+        if (s.Length != 4 && s.Length != 6 && !s.All(char.IsDigit))
+        {
+            return false;
+        }
+        
+        **/
+        
+        return true;
     }
 }
