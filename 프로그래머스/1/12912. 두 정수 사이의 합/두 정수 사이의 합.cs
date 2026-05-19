@@ -1,16 +1,13 @@
+using System;
+
 public class Solution {
     public long solution(int a, int b) {
         long answer = 0;
         
-        if (a > b) {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
-    
-        for (int i = a; i <= b; i++) {
-            answer += i;
-        }
+        long A = Math.Min(a, b);
+        long B = Math.Max(a, b);
+        
+        answer = (A + B) * (B - A + 1) / 2;
         
         return answer;
     }
